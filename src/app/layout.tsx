@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Smart Ride | Book rides and drive on your schedule",
+  title: "Smart Ride | Book Zaria rides without WhatsApp",
   description:
-    "Request rides across Zaria, compare fares, chat with your driver, and earn as a Smart Ride driver.",
+    "Request Smart Ride pickup, delivery, school runs, airport trips, and special rides in the app instead of booking through WhatsApp.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

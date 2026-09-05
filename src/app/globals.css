@@ -20,6 +20,7 @@ html {
 }
 
 body {
+  overflow-wrap: anywhere;
   margin: 0;
   background: var(--paper);
   color: var(--ink);
@@ -72,6 +73,19 @@ main {
   background: var(--ink);
 }
 
+.site-header .brand {
+  font-size: 20px;
+}
+
+.site-header .brand img {
+  width: 44px;
+  height: 44px;
+  /* The source PNG already carries its own margin, so the box needs very
+     little of its own — otherwise the mark reads smaller than the tile. */
+  padding: 2px;
+  border-radius: 12px;
+}
+
 .desktop-nav,
 .header-actions,
 .site-footer nav {
@@ -96,9 +110,7 @@ main {
 }
 
 .pill-button,
-.secondary-button,
-.light-button,
-.store-button {
+.light-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -123,12 +135,6 @@ main {
   font-size: 14px;
 }
 
-.secondary-button {
-  padding: 0 22px;
-  background: var(--soft);
-  color: var(--ink);
-}
-
 .light-button {
   width: fit-content;
   padding: 0 26px;
@@ -137,9 +143,7 @@ main {
 }
 
 .pill-button:hover,
-.secondary-button:hover,
-.light-button:hover,
-.store-button:hover {
+.light-button:hover {
   transform: translateY(-2px);
   opacity: 0.9;
 }
@@ -188,7 +192,7 @@ h3 {
 .section-copy p,
 .business-card p,
 .feature-grid p,
-.download-section p {
+.waitlist-copy p {
   max-width: 58ch;
   margin-top: 24px;
   color: var(--muted);
@@ -250,20 +254,14 @@ h3 {
 .hero-visual {
   position: relative;
   min-height: 620px;
-  overflow: hidden;
-  border-radius: 34px;
-  background:
-    linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0.72),
-      rgba(255, 255, 255, 0.2)
-    ),
-    #e8e7df;
+  overflow: visible;
+  background: transparent;
 }
 
 .map-lines {
   position: absolute;
-  inset: 0;
+  inset: 0 -4% 2% 0;
+  opacity: 0.28;
   background:
     linear-gradient(
       26deg,
@@ -293,13 +291,19 @@ h3 {
     360px 260px,
     240px 180px,
     cover;
+  mask-image: radial-gradient(ellipse at center, #000 36%, transparent 74%);
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    #000 36%,
+    transparent 74%
+  );
 }
 
 .hero-car {
   position: absolute;
-  right: 6%;
-  bottom: 13%;
-  width: min(78%, 520px);
+  right: -8%;
+  bottom: 7%;
+  width: min(102%, 800px);
   height: auto;
   filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.12));
 }
@@ -365,7 +369,7 @@ h3 {
 .dark-section,
 .business-section,
 .feature-grid,
-.download-section {
+.waitlist-section {
   padding: clamp(58px, 8vw, 112px) clamp(20px, 5vw, 72px);
 }
 
@@ -433,6 +437,10 @@ h3 {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.dark-section .light-button {
+  margin-top: 34px;
+}
+
 .driver-steps {
   display: grid;
   gap: 1px;
@@ -472,20 +480,27 @@ h3 {
 
 .business-card {
   display: grid;
-  justify-items: start;
-  gap: 26px;
+  grid-template-columns: minmax(0, 0.82fr) minmax(360px, 1fr);
+  gap: clamp(20px, 5vw, 64px);
+  align-items: center;
   min-height: 420px;
   padding: clamp(32px, 7vw, 72px);
   border-radius: 30px;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(246, 246, 243, 0.96) 0%,
-      rgba(246, 246, 243, 0.72) 54%,
-      transparent 82%
-    ),
-    url("/promo-phone.png") right center / auto 100% no-repeat,
-    var(--paper);
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.business-copy {
+  display: grid;
+  justify-items: start;
+  gap: 26px;
+}
+
+.business-cutout {
+  width: min(100%, 720px);
+  height: auto;
+  justify-self: end;
+  margin: -48px -88px -60px 0;
 }
 
 .business-card h2 {
@@ -513,54 +528,6 @@ h3 {
   font-size: 16px;
 }
 
-.download-section {
-  display: grid;
-  grid-template-columns: 0.78fr 1fr;
-  gap: clamp(32px, 7vw, 88px);
-  align-items: center;
-  overflow: hidden;
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.download-section p {
-  color: rgba(255, 255, 255, 0.76);
-}
-
-.store-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 32px;
-}
-
-.store-button {
-  display: grid;
-  justify-items: start;
-  min-width: 174px;
-  min-height: 62px;
-  padding: 11px 18px;
-  background: var(--paper);
-  color: var(--ink);
-}
-
-.store-button span {
-  font-size: 12px;
-  line-height: 1;
-}
-
-.store-button strong {
-  font-size: 19px;
-  line-height: 1.2;
-}
-
-.phone-image {
-  width: min(100%, 720px);
-  height: auto;
-  border-radius: 26px;
-  justify-self: end;
-}
-
 .site-footer {
   display: flex;
   align-items: center;
@@ -575,6 +542,189 @@ h3 {
   font-size: 14px;
 }
 
+/* Waitlist */
+.waitlist-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 48px;
+  align-items: center;
+  padding: 88px 24px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.waitlist-copy h2 {
+  margin: 8px 0 14px;
+}
+
+.waitlist-copy p {
+  color: var(--muted);
+  max-width: 46ch;
+}
+
+.waitlist-eyebrow {
+  display: inline-block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 720;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  border-radius: var(--radius);
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.waitlist-roles {
+  display: flex;
+  gap: 10px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.waitlist-role {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--canvas);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+/* The radio itself is hidden, but must stay focusable for keyboard users. */
+.waitlist-role input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.waitlist-role.is-selected {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.waitlist-role:has(input:focus-visible) {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.waitlist-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 12px;
+}
+
+.waitlist-fields input {
+  min-height: 52px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--canvas);
+  font: inherit;
+  color: var(--ink);
+}
+
+.waitlist-fields input::placeholder {
+  color: var(--muted);
+}
+
+.waitlist-fields input:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.waitlist-fields .pill-button {
+  grid-column: 1 / -1;
+  border: 0;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.waitlist-fields .pill-button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+  transform: none;
+}
+
+.waitlist-note,
+.waitlist-error {
+  margin: 0;
+  font-size: 13px;
+}
+
+.waitlist-note {
+  color: var(--muted);
+}
+
+.waitlist-error {
+  color: #c0392b;
+}
+
+.waitlist-done {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 32px 28px;
+  border-radius: var(--radius);
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.waitlist-done p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.waitlist-done-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink) !important;
+}
+
+.waitlist-done .link-button {
+  align-self: flex-start;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 650;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+/* Screen-reader-only labels: the placeholders carry the visible cue. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media (max-width: 980px) {
   .desktop-nav {
     display: none;
@@ -582,9 +732,16 @@ h3 {
 
   .hero-section,
   .split-section,
-  .dark-section,
-  .download-section {
+  .dark-section {
     grid-template-columns: 1fr;
+  }
+
+  /* The car deliberately bleeds past the right edge for effect. Once the hero
+     stacks there is no column beside it to absorb that, so the whole page
+     scrolls sideways unless it is pulled in. */
+  .hero-car {
+    right: -3%;
+    width: min(98%, 640px);
   }
 
   .hero-visual {
@@ -600,21 +757,34 @@ h3 {
   }
 
   .business-card {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(246, 246, 243, 0.96),
-        rgba(246, 246, 243, 0.86)
-      ),
-      url("/promo-phone.png") right bottom / 92% auto no-repeat,
-      var(--paper);
-    padding-bottom: 320px;
+    grid-template-columns: 1fr;
+  }
+
+  .business-cutout {
+    justify-self: center;
+    margin: 0 -18% -80px;
+    width: min(124%, 760px);
+  }
+
+  .waitlist-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
   }
 }
 
 @media (max-width: 640px) {
   .site-header {
     height: 64px;
+  }
+
+  .site-header .brand {
+    font-size: 18px;
+  }
+
+  .site-header .brand img {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
   }
 
   .header-actions .link-button {
@@ -631,14 +801,18 @@ h3 {
   }
 
   .panel-actions,
-  .pill-button,
-  .secondary-button {
+  .pill-button {
     width: 100%;
   }
 
   .hero-visual {
     min-height: 390px;
     border-radius: 24px;
+  }
+
+  .hero-car {
+    right: -2%;
+    width: min(96%, 420px);
   }
 
   .floating-card {
@@ -670,12 +844,15 @@ h3 {
   .business-card {
     min-height: 560px;
     padding: 28px;
-    padding-bottom: 260px;
+    padding-bottom: 0;
     border-radius: 22px;
   }
 
-  .download-section {
-    padding-bottom: 0;
+  .business-cutout {
+    /* Kept just inside the card: -20% overshot the viewport around 430px. */
+    width: 118%;
+    max-width: none;
+    margin: 0 -9% -44px;
   }
 
   .site-footer {
@@ -686,6 +863,66 @@ h3 {
   .site-footer nav {
     flex-wrap: wrap;
     gap: 18px;
+  }
+
+  .waitlist-section {
+    padding: 56px 20px;
+  }
+
+  .waitlist-form,
+  .waitlist-done {
+    padding: 22px 18px;
+  }
+
+  /* Stack the two choices: side by side they wrap mid-word on a phone. */
+  .waitlist-roles {
+    flex-direction: column;
+  }
+
+  .waitlist-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Footer links rendered 21px tall — under half the 44px a fingertip needs.
+     Padding grows the hit area without moving anything visually. */
+  .site-footer nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-header {
+    padding: 0 14px;
+  }
+
+  .site-header .brand {
+    font-size: 17px;
+    gap: 8px;
+  }
+
+  .site-header .brand img {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .header-actions .pill-button.small {
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  /* The floating hero cards crowd the car illustration at this width. */
+  .floating-card {
+    min-width: 132px;
+    padding: 10px;
   }
 }
 

@@ -1,33 +1,37 @@
 import Image from "next/image";
 
-const rideOptions = [
+import { WaitlistForm } from "@/components/WaitlistForm";
+
+const serviceOptions = [
   {
-    name: "Smart Eco",
-    detail: "Everyday rides at a lower fare",
-    price: "from ₦1,900",
+    name: "Pick n drop",
+    detail:
+      "Quick local trips around Zaria with pickup and dropoff handled in-app.",
+    price: "Local rides",
   },
   {
-    name: "Smart Comfort",
-    detail: "More space, newer cars",
-    price: "from ₦2,600",
+    name: "School and home pickup",
+    detail: "Planned rides for students, pupils, families, and daily movement.",
+    price: "Scheduled",
   },
   {
-    name: "Smart Premium",
-    detail: "Higher-rated drivers and executive cars",
-    price: "from ₦3,900",
+    name: "Intercity and airport trips",
+    detail:
+      "Trips to Kaduna, Rigasa train station, Aminu Kano Airport, and more.",
+    price: "On request",
   },
 ];
 
 const cityStats = [
   ["Zaria", "built around Samaru, ABU, Sabon Gari, and city routes"],
-  ["24/7", "trip support for riders and drivers"],
-  ["₦0", "cash or card, no hidden signup fees"],
+  ["Managed", "Smart Ride drivers only, reviewed by the operations team"],
+  ["No DMs", "book rides in the app instead of posting in WhatsApp groups"],
 ];
 
-const driverSteps = [
-  "Apply with your licence, insurance, and vehicle photo.",
-  "Get reviewed by Smart Ride operations.",
-  "Go online and accept trips when you want to earn.",
+const bookingSteps = [
+  "Choose your pickup, dropoff, and service type without searching through group messages.",
+  "Get clear trip details from Smart Ride operations and your assigned driver.",
+  "Track the ride, chat when needed, and keep your booking history in one place.",
 ];
 
 export default function Home() {
@@ -35,33 +39,32 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Smart Ride home">
-          <Image src="/brand-mark.png" alt="" width={32} height={32} priority />
+          <Image src="/brand-mark.png" alt="" width={44} height={44} priority />
           <span>Smart Ride</span>
         </a>
 
         <nav className="desktop-nav" aria-label="Main navigation">
           <a href="#ride">Ride</a>
-          <a href="#drive">Drive</a>
+          <a href="#service">Service</a>
           <a href="#business">Business</a>
           <a href="#safety">Safety</a>
+          <a href="#waitlist">Waitlist</a>
         </nav>
 
         <div className="header-actions">
-          <a className="link-button" href="#download">
-            Log in
-          </a>
-          <a className="pill-button small" href="#download">
-            Sign up
+          <a className="pill-button small" href="#waitlist">
+            Join waitlist
           </a>
         </div>
       </header>
 
       <section id="top" className="hero-section">
         <div className="hero-copy">
-          <h1>Go anywhere with Smart Ride</h1>
+          <h1>Book Smart Ride without WhatsApp</h1>
           <p>
-            Request reliable rides across Zaria, compare fare options, chat with
-            your driver, and pay the way that works for you.
+            Smart Ride already moves people around Zaria through WhatsApp. The
+            app gives customers a cleaner way to request pickup, delivery,
+            school runs, airport trips, and special rides.
           </p>
 
           <div id="ride" className="request-panel" aria-label="Request a ride">
@@ -80,11 +83,8 @@ export default function Home() {
               </span>
             </label>
             <div className="panel-actions">
-              <a className="pill-button" href="#download">
-                Request now
-              </a>
-              <a className="secondary-button" href="#download">
-                Schedule for later
+              <a className="pill-button" href="#waitlist">
+                Join waitlist
               </a>
             </div>
           </div>
@@ -94,10 +94,10 @@ export default function Home() {
           <div className="map-lines" />
           <Image
             className="hero-car"
-            src="/hero-ride.png"
+            src="/hero-cutout.png"
             alt="Smart Ride car"
-            width={420}
-            height={300}
+            width={768}
+            height={512}
             priority
           />
           <div className="floating-card pickup-card">
@@ -122,19 +122,19 @@ export default function Home() {
 
       <section className="split-section">
         <div className="section-copy">
-          <h2>Ride your way</h2>
+          <h2>All Smart Ride services in one place</h2>
           <p>
-            Choose a cheaper daily ride, a roomier car, or a premium trip. Smart
-            Ride shows the fare before you book, whether you are heading to ABU,
-            Sabon Gari, Kwangila, or the city centre.
+            Book the same services customers already request in the WhatsApp
+            group: pick n drop, home pickup, hotel and club pickup, school runs,
+            parcel delivery, Kaduna trips, airport trips, and special rides.
           </p>
-          <a className="text-link" href="#download">
-            See ride options
+          <a className="text-link" href="#waitlist">
+            Join the app waitlist
           </a>
         </div>
 
         <div className="ride-options">
-          {rideOptions.map((option) => (
+          {serviceOptions.map((option) => (
             <article key={option.name} className="ride-option">
               <Image src="/car-comfort.png" alt="" width={80} height={72} />
               <div>
@@ -147,21 +147,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="drive" className="dark-section">
+      <section id="service" className="dark-section">
         <div className="section-copy">
-          <h2>Drive when it works for you</h2>
+          <h2>Not an open driver app</h2>
           <p>
-            Smart Ride gives drivers a clear online switch, trip requests with
-            pickup and dropoff details, and an earnings view that stays easy to
-            read.
+            Smart Ride is operated by its own team and trusted drivers. The app
+            is for customers to book more easily, while operations assigns and
+            manages each trip.
           </p>
-          <a className="light-button" href="#download">
-            Start driving
+          <a className="light-button" href="#waitlist">
+            Join the customer waitlist
           </a>
         </div>
 
         <div className="driver-steps">
-          {driverSteps.map((step, index) => (
+          {bookingSteps.map((step, index) => (
             <div key={step} className="driver-step">
               <span>{index + 1}</span>
               <p>{step}</p>
@@ -172,15 +172,25 @@ export default function Home() {
 
       <section id="business" className="business-section">
         <div className="business-card">
-          <h2>Trips for teams, guests, and daily operations</h2>
-          <p>
-            Move staff, visitors, students, and field teams around Zaria with
-            trip history, clear pricing, and simple controls for repeated
-            travel.
-          </p>
-          <a className="pill-button" href="#download">
-            Create a business account
-          </a>
+          <div className="business-copy">
+            <h2>Trips for teams, guests, and daily operations</h2>
+            <p>
+              Move staff, visitors, students, and field teams around Zaria with
+              managed Smart Ride drivers, trip history, clear requests, and
+              simple controls for repeated travel.
+            </p>
+            <a className="pill-button" href="#waitlist">
+              Join waitlist
+            </a>
+          </div>
+
+          <Image
+            className="business-cutout"
+            src="/business-cutout.png"
+            alt="Smart Ride driver and passengers"
+            width={768}
+            height={512}
+          />
         </div>
       </section>
 
@@ -188,70 +198,47 @@ export default function Home() {
         <article>
           <h2>Safety built into every trip</h2>
           <p>
-            Driver review, live trip status, in-app chat, ratings, and report
-            flows keep riders and drivers connected before, during, and after
-            the ride.
+            The WhatsApp group is useful, but trip details can get buried. Smart
+            Ride brings requests, driver assignment, live status, chat, and
+            support into one app flow.
           </p>
         </article>
         <article>
-          <h3>Verified drivers</h3>
+          <h3>Smart Ride drivers</h3>
           <p>
-            Applications can be approved or rejected by operations before
-            drivers receive trips.
+            Trips are handled by Smart Ride&apos;s own driver network, reviewed
+            and managed by the operations team.
           </p>
         </article>
         <article>
-          <h3>Clear communication</h3>
+          <h3>No lost requests</h3>
           <p>
-            Riders and drivers can message, share photos, and receive push
-            updates for key events.
+            Customers no longer need to scroll through WhatsApp threads or wait
+            for a group reply to place a ride request.
           </p>
         </article>
         <article>
-          <h3>Open map coverage</h3>
+          <h3>Local routes</h3>
           <p>
-            Smart Ride uses OpenStreetMap-based tiles and routing for a
-            dependable local map view.
+            Built around Zaria routes, with support for Kaduna, Rigasa train
+            station, Aminu Kano Airport, and special trips.
           </p>
         </article>
       </section>
 
-      <section id="download" className="download-section">
-        <div>
-          <h2>Get the Smart Ride app</h2>
+      <section id="waitlist" className="waitlist-section">
+        <div className="waitlist-copy">
+          <p className="waitlist-eyebrow">Zaria bookings</p>
+          <h2>Move from WhatsApp to the app</h2>
           <p>
-            Book a ride, drive, manage payments, and follow trips from one clean
-            mobile experience.
+            Leave your email and we&apos;ll tell you when Smart Ride is ready
+            for app bookings, so you can request rides without sending a DM or
+            posting in the WhatsApp group.
           </p>
-          <div className="store-row">
-            <a
-              href="#"
-              className="store-button"
-              aria-label="Download on the App Store"
-            >
-              <span>Download on the</span>
-              <strong>App Store</strong>
-            </a>
-            <a
-              href="#"
-              className="store-button"
-              aria-label="Get it on Google Play"
-            >
-              <span>Get it on</span>
-              <strong>Google Play</strong>
-            </a>
-          </div>
         </div>
 
-        <Image
-          className="phone-image"
-          src="/promo-phone.png"
-          alt="Smart Ride app screens"
-          width={560}
-          height={373}
-        />
+        <WaitlistForm />
       </section>
-
       <footer className="site-footer">
         <div className="brand footer-brand">
           <Image src="/brand-mark.png" alt="" width={28} height={28} />
@@ -259,9 +246,10 @@ export default function Home() {
         </div>
         <nav aria-label="Footer navigation">
           <a href="#ride">Ride</a>
-          <a href="#drive">Drive</a>
+          <a href="#service">Service</a>
           <a href="#business">Business</a>
           <a href="#safety">Safety</a>
+          <a href="#waitlist">Waitlist</a>
         </nav>
         <p>© 2026 Smart Ride. All rights reserved.</p>
       </footer>
