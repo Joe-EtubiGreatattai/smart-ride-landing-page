@@ -24,13 +24,13 @@ const serviceOptions = [
 
 const cityStats = [
   ["Zaria", "built around Samaru, ABU, Sabon Gari, and city routes"],
-  ["Managed", "Smart Ride drivers only, reviewed by the operations team"],
+  ["Managed", "Hopr drivers only, reviewed by the operations team"],
   ["No DMs", "book rides in the app instead of posting in WhatsApp groups"],
 ];
 
 const bookingSteps = [
   "Choose your pickup, dropoff, and service type without searching through group messages.",
-  "Get clear trip details from Smart Ride operations and your assigned driver.",
+  "Get clear trip details from Hopr operations and your assigned driver.",
   "Track the ride, chat when needed, and keep your booking history in one place.",
 ];
 
@@ -38,9 +38,9 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Smart Ride home">
+        <a className="brand" href="#top" aria-label="Hopr home">
           <Image src="/brand-mark.png" alt="" width={44} height={44} priority />
-          <span>Smart Ride</span>
+          <span>Hopr</span>
         </a>
 
         <nav className="desktop-nav" aria-label="Main navigation">
@@ -60,9 +60,9 @@ export default function Home() {
 
       <section id="top" className="hero-section">
         <div className="hero-copy">
-          <h1>Book Smart Ride without WhatsApp</h1>
+          <h1>Book a Hopr ride without WhatsApp</h1>
           <p>
-            Smart Ride already moves people around Zaria through WhatsApp. The
+            Hopr already moves people around Zaria through WhatsApp. The
             app gives customers a cleaner way to request pickup, delivery,
             school runs, airport trips, and special rides.
           </p>
@@ -90,12 +90,12 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="Smart Ride app preview">
+        <div className="hero-visual" aria-label="Hopr app preview">
           <div className="map-lines" />
           <Image
             className="hero-car"
             src="/hero-cutout.png"
-            alt="Smart Ride car"
+            alt="Hopr car"
             width={768}
             height={512}
             priority
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="stat-strip" aria-label="Smart Ride highlights">
+      <section className="stat-strip" aria-label="Hopr highlights">
         {cityStats.map(([value, label]) => (
           <div key={label}>
             <strong>{value}</strong>
@@ -122,7 +122,7 @@ export default function Home() {
 
       <section className="split-section">
         <div className="section-copy">
-          <h2>All Smart Ride services in one place</h2>
+          <h2>All Hopr services in one place</h2>
           <p>
             Book the same services customers already request in the WhatsApp
             group: pick n drop, home pickup, hotel and club pickup, school runs,
@@ -151,7 +151,7 @@ export default function Home() {
         <div className="section-copy">
           <h2>Not an open driver app</h2>
           <p>
-            Smart Ride is operated by its own team and trusted drivers. The app
+            Hopr is operated by its own team and trusted drivers. The app
             is for customers to book more easily, while operations assigns and
             manages each trip.
           </p>
@@ -176,7 +176,7 @@ export default function Home() {
             <h2>Trips for teams, guests, and daily operations</h2>
             <p>
               Move staff, visitors, students, and field teams around Zaria with
-              managed Smart Ride drivers, trip history, clear requests, and
+              managed Hopr drivers, trip history, clear requests, and
               simple controls for repeated travel.
             </p>
             <a className="pill-button" href="#waitlist">
@@ -187,7 +187,7 @@ export default function Home() {
           <Image
             className="business-cutout"
             src="/business-cutout.png"
-            alt="Smart Ride driver and passengers"
+            alt="Hopr driver and passengers"
             width={768}
             height={512}
           />
@@ -204,9 +204,9 @@ export default function Home() {
           </p>
         </article>
         <article>
-          <h3>Smart Ride drivers</h3>
+          <h3>Hopr drivers</h3>
           <p>
-            Trips are handled by Smart Ride&apos;s own driver network, reviewed
+            Trips are handled by Hopr&apos;s own driver network, reviewed
             and managed by the operations team.
           </p>
         </article>
@@ -231,7 +231,7 @@ export default function Home() {
           <p className="waitlist-eyebrow">Zaria bookings</p>
           <h2>Move from WhatsApp to the app</h2>
           <p>
-            Leave your email and we&apos;ll tell you when Smart Ride is ready
+            Leave your email and we&apos;ll tell you when Hopr is ready
             for app bookings, so you can request rides without sending a DM or
             posting in the WhatsApp group.
           </p>
@@ -242,7 +242,7 @@ export default function Home() {
       <footer className="site-footer">
         <div className="brand footer-brand">
           <Image src="/brand-mark.png" alt="" width={28} height={28} />
-          <span>Smart Ride</span>
+          <span>Hopr</span>
         </div>
         <nav aria-label="Footer navigation">
           <a href="#ride">Ride</a>
@@ -250,8 +250,10 @@ export default function Home() {
           <a href="#business">Business</a>
           <a href="#safety">Safety</a>
           <a href="#waitlist">Waitlist</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
         </nav>
-        <p>© 2026 Smart Ride. All rights reserved.</p>
+        <p>© 2026 Hopr. All rights reserved.</p>
       </footer>
     </main>
   );

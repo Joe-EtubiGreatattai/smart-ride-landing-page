@@ -31,9 +31,9 @@ function siteUrl(): URL {
   return new URL("http://localhost:3000");
 }
 
-const title = "Smart Ride | Book Zaria rides without WhatsApp";
+const title = "Hopr | Book Zaria rides without WhatsApp";
 const description =
-  "Request Smart Ride pickup, delivery, school runs, airport trips, and special rides in the app instead of booking through WhatsApp.";
+  "Request Hopr pickup, delivery, school runs, airport trips, and special rides in the app instead of booking through WhatsApp.";
 
 export const metadata: Metadata = {
   metadataBase: siteUrl(),
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   // images; Next emits the tags and resolves them against metadataBase.
   openGraph: {
     type: "website",
-    siteName: "Smart Ride",
+    siteName: "Hopr",
     title,
     description,
     locale: "en_NG",

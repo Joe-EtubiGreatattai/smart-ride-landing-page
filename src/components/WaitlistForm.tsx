@@ -55,7 +55,7 @@ export function WaitlistForm() {
       setCity("");
     } catch {
       setError(
-        "Could not reach Smart Ride. Check your connection and try again.",
+        "Could not reach Hopr. Check your connection and try again.",
       );
       setStatus("error");
     }
@@ -70,7 +70,7 @@ export function WaitlistForm() {
             : "You're on the list"}
         </p>
         <p>
-          We&apos;ll email you as soon as Smart Ride app bookings are ready in
+          We&apos;ll email you as soon as Hopr app bookings are ready in
           Zaria. No spam, and you can ask us to remove you any time.
         </p>
         <button
@@ -148,7 +148,7 @@ export function WaitlistForm() {
       )}
 
       <p className="waitlist-note">
-        We&apos;ll only use your email to tell you when Smart Ride app bookings
+        We&apos;ll only use your email to tell you when Hopr app bookings
         are ready.
       </p>
     </form>
