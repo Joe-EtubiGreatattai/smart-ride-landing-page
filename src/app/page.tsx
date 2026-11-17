@@ -24,7 +24,7 @@ const serviceOptions = [
 
 const cityStats = [
   ["Zaria", "built around Samaru, ABU, Sabon Gari, and city routes"],
-  ["Managed", "Hopr drivers only, reviewed by the operations team"],
+  ["Vetted", "every Hopr driver is reviewed by the operations team"],
   ["No DMs", "book rides in the app instead of posting in WhatsApp groups"],
 ];
 
@@ -149,14 +149,14 @@ export default function Home() {
 
       <section id="service" className="dark-section">
         <div className="section-copy">
-          <h2>Not an open driver app</h2>
+          <h2>Drive with Hopr</h2>
           <p>
-            Hopr is operated by its own team and trusted drivers. The app
-            is for customers to book more easily, while operations assigns and
-            manages each trip.
+            Hopr drivers use the separate Hopr Driver app. Apply with your
+            licence and vehicle details, and the operations team reviews every
+            application before you can go online and start taking trips.
           </p>
-          <a className="light-button" href="#waitlist">
-            Join the customer waitlist
+          <a className="light-button" href="mailto:support@smartride.ng?subject=Driver%20application">
+            Apply to drive
           </a>
         </div>
 
@@ -198,8 +198,8 @@ export default function Home() {
         <article>
           <h2>Safety built into every trip</h2>
           <p>
-            The WhatsApp group is useful, but trip details can get buried. Smart
-            Ride brings requests, driver assignment, live status, chat, and
+            The WhatsApp group is useful, but trip details can get buried. Hopr
+            brings requests, driver assignment, live status, chat, and
             support into one app flow.
           </p>
         </article>
@@ -250,8 +250,10 @@ export default function Home() {
           <a href="#business">Business</a>
           <a href="#safety">Safety</a>
           <a href="#waitlist">Waitlist</a>
+          <a href="/support">Support</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
+          <a href="/delete-account">Delete account</a>
         </nav>
         <p>© 2026 Hopr. All rights reserved.</p>
       </footer>
